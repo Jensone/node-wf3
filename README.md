@@ -12,16 +12,15 @@ Créer une app NodeJS qui permet de gérer une liste de tâches pour le dévelop
 
 | Infos | Description |
 | --- | --- |
-Durée |14h  (2 jours) |
-Format |Hybrid (présentiel et distanciel) |
-Évaluation |1 projet à rendre avec un dépôt GitHub + lien de l'application déployée |
-Réalisation |Individuelle |
+Durée de formation | 14h  (2 jours) |
+Format | Hybrid (présentiel et distanciel) |
+Évaluation | 1 projet à rendre avec un dépôt GitHub + lien de l'application déployée |
+Réalisation | Individuelle |
 
 ### Fonctionnalités :
 
 - Afficher la liste des tâches
 - Ajouter une tâche
-- Modifier une tâche
 - Supprimer une tâche
 
 ### Données :
