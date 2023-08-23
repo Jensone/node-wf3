@@ -65,3 +65,40 @@ app.use('/api', jsm);
  */
 app.set('view engine', 'ejs');
 
+
+// ------------------ ROUTES ------------------ //
+
+/**
+ * Lorsqu'un internaute accède à la route "/", on va le rediriger vers la route "/tasks".
+ */
+app.get('/', (req, res) => {
+    res.redirect('/tasks');
+});
+
+/**
+ * On va retourner une vue en ejs pour la route "/tasks".
+ */
+app.get('/tasks', (req, res) => {
+    const tasks = JSON.parse(fs.readFileSync('db.json')).tasks;
+    res.render('tasks', { tasks });
+});
+
+/**
+ * Supprimer une tâche en fonction de son id.
+ * On va supprimer la tâche dans le fichier JSON.
+ */
+app.get('/tasks/delete/:id', (req, res) => {
+    const tasks = JSON.parse(fs.readFileSync('db.json')).tasks;
+    const newTasks = tasks.filter(task => task.id !== parseInt(req.params.id));
+    fs.writeFileSync('db.json', JSON.stringify({ tasks: newTasks }));
+    res.redirect('/tasks');
+});
+
+
+// ------------------ SERVER ------------------ //
+
+/**
+ * Ici, on indique que l'on veut que le serveur écoute les requêtes reçues sur le port 3000.
+ * Cela signifie que notre serveur va pouvoir recevoir des requêtes à l'adresse "http://localhost:3000".
+ */
+app.listen(3000, () => console.log('Le serveur est lancé sur le port 3000'));
