@@ -8,32 +8,44 @@
     <title>TODO APP</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
     <style>
-        .logo {
+        .logo, footer {
             text-align: center;
+        }
+        hr {
+            margin-bottom: 2em;
         }
         .actions {
             display: flex;
             justify-content: space-around;
             align-items: center;
         }
+
         .btn {
             background-color: #fff;
             padding: .5em;
         }
+
         .Urgent {
             background-color: red;
         }
+
         .Faible {
             background-color: green;
         }
+
         .Normal {
             background-color: rgb(10, 189, 243);
         }
-        .Urgent, .Faible, .Normal {
+        .Urgent,
+        .Faible,
+        .Normal {
             color: #fff;
             text-align: center;
             border-radius: 2em;
             font-weight: bold;
+        }
+        button {
+            width: inherit;
         }
     </style>
 </head>
@@ -43,7 +55,26 @@
         <div class="logo">
             <img src="https://agiliteach.b-cdn.net/medias/images/todo-app.png" alt="logo">
         </div>
-
+        <hr>
+        <div class="container">
+            <form action="/tasks/create" method="POST">
+                <div class="grid">
+                    <label for="firstname">
+                        <input type="text" id="title" name="title" placeholder="Titre de la tâche" required>
+                    </label>
+                    <select id="status" name="status" required>
+                        <option value="" selected>Selectionnez un statut</option>
+                        <option value="Important" >Faible</option>
+                        <option value="Normal" >Normal</option>
+                        <option value="Urgent" >Urgent</option>
+                    </select>
+                </div>
+                <label for="description">Description courte de la tâche</label>
+                <input type="text" id="description" name="description" placeholder="Mettre 'Bécane' de Yamé en HD sur Spotify dans les écouteurs." required>
+                <button type="submit">Enregistrer</button>
+            </form>
+        </div>
+        <hr>
         <table>
             <thead>
                 <tr>
@@ -70,7 +101,8 @@
                             </td>
                             <td class="actions">
                                 <a class="btn" href="/tasks/delete/<%= task.id %>">
-                                    <img src="https://api.iconify.design/ic:baseline-delete-forever.svg" alt="Supprimer">
+                                    <img src="https://api.iconify.design/ic:baseline-delete-forever.svg"
+                                        alt="Supprimer">
                                 </a>
                             </td>
                         </tr>
@@ -82,6 +114,9 @@
                                 <% } %>
             </tbody>
         </table>
+        <footer>
+            <p>Cours de NodeJS - <a href="https://www.agiliteach.org">Agiliteach</a></p>
+        </footer>
     </div>
 </body>
 
